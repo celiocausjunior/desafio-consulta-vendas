@@ -3,11 +3,11 @@ package com.devsuperior.dsmeta.services;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
@@ -26,13 +26,13 @@ public class SaleService {
 		return new SaleMinDTO(entity);
 	}
 
-	public List<SaleMinDTO> search1(String startDate, String endDate, String name) {
+	public Page<SaleMinDTO> search1(String startDate, String endDate, String name, Pageable pageable) {
 
 		LocalDate start = starDate(startDate);
 		LocalDate end = endDate(endDate);
 
-		List<Sale> result = repository.search1(start, end, name);
-		return result.stream().map(x -> new SaleMinDTO(x)).collect(Collectors.toList());
+		Page<Sale> result = repository.search1(start, end, name, pageable);
+		return result.map(x -> new SaleMinDTO(x));
 	}
 
 	public LocalDate starDate(String startDate) {
