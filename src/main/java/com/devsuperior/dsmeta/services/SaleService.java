@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
+import com.devsuperior.dsmeta.dto.SellerMinDTO;
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 
@@ -36,12 +37,12 @@ public class SaleService {
 	}
 
 
-		public Page<SaleMinDTO> search2(String startDate, String endDate, String name, Pageable pageable) {
+		public Page<SellerMinDTO> search2(String startDate, String endDate, String name, Pageable pageable) {
 
 		LocalDate start = starDate(startDate);
 		LocalDate end = endDate(endDate);
 
-		Page<SaleMinDTO> result = repository.search2(start, end, name, pageable);
+		Page<SellerMinDTO> result = repository.search2(start, end, name, pageable);
 		return result;
 	}
 
