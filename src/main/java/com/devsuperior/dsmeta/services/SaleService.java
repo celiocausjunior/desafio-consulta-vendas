@@ -35,6 +35,17 @@ public class SaleService {
 		return result.map(x -> new SaleMinDTO(x));
 	}
 
+
+		public Page<SaleMinDTO> search2(String startDate, String endDate, String name, Pageable pageable) {
+
+		LocalDate start = starDate(startDate);
+		LocalDate end = endDate(endDate);
+
+		Page<SaleMinDTO> result = repository.search2(start, end, name, pageable);
+		return result;
+	}
+
+
 	public LocalDate starDate(String startDate) {
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
 		if (startDate == null || startDate.equals("")) {

@@ -10,6 +10,7 @@ public class SaleMinDTO {
 	private Double amount;
 	private LocalDate date;
 	private String sellerName;
+	private Double sum;
 	
 	public SaleMinDTO(Long id, Double amount, LocalDate date) {
 		this.id = id;
@@ -22,6 +23,11 @@ public class SaleMinDTO {
 		amount = entity.getAmount();
 		date = entity.getDate();
 		sellerName = entity.getSeller().getName();
+	}
+
+	public SaleMinDTO(String name, Double sum){
+		sellerName = name;
+		this.sum = sum;
 	}
 
 	public Long getId() {
@@ -40,9 +46,8 @@ public class SaleMinDTO {
 		return sellerName;
 	}
 
-	@Override
-	public String toString() {
-		return "SaleMinDTO [id=" + id + ", amount=" + amount + ", date=" + date + ", sellerName=" + sellerName + "]";
+	public Double getSum() {
+		return sum;
 	}
 
 	

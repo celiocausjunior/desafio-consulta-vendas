@@ -33,8 +33,8 @@ public class SaleController {
 	}
 
 	@GetMapping(value = "/summary")
-	public ResponseEntity<?> getSummary() {
-		// TODO
-		return null;
+		public ResponseEntity<Page<SaleMinDTO>> getSummary(Pageable pageable, @RequestParam(name="minDate", required = false) String minDate, @RequestParam(name="maxDate", required = false) String maxDate, @RequestParam(name="name", required = false) String name ) {
+		Page<SaleMinDTO> list = service.search2(minDate, maxDate, name, pageable);
+		return ResponseEntity.ok(list);
 	}
 }
