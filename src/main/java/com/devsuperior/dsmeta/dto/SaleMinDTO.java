@@ -3,7 +3,6 @@ package com.devsuperior.dsmeta.dto;
 import java.time.LocalDate;
 
 import com.devsuperior.dsmeta.entities.Sale;
-import com.devsuperior.dsmeta.interfaces.SaleMinProjection;
 
 public class SaleMinDTO {
 
@@ -23,13 +22,6 @@ public class SaleMinDTO {
 		amount = entity.getAmount();
 		date = entity.getDate();
 		sellerName = entity.getSeller().getName();
-	}
-
-	public SaleMinDTO(SaleMinProjection projection){
-		id = projection.getId();
-		amount = projection.getAmount();
-		date = projection.getDate();
-		sellerName = projection.getName();
 	}
 
 	public Long getId() {
